@@ -16,8 +16,8 @@ start_xvfb() {
 
 # Start Steam as user
 start_steam() {
-    #runuser -u root -- xterm &
-    runuser -u steam -- steam & 
+    runuser -u root -- xterm -maximized &
+    #runuser -u steam -- steam & 
 }
 
 # Start x11vnc
