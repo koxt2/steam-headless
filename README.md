@@ -18,6 +18,9 @@ X server key autorepeat not working.
 
 ## Setup
 
+It's locale is en_GB - you may want to change and rebuild. 
+sudo docker build -t steam-headless .
+
 It assumes the host's user has a PUID=1000 and PGID=1000.
 
 Create a directory for your container's /home and change permissions...
