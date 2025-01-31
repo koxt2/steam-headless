@@ -20,7 +20,6 @@ ENV     LANG=en_GB.UTF-8 \
 ########## Install some needed packages ########## 
 RUN     apt-get update && apt-get install -y --no-install-recommends \
         at-spi2-core \
-#       dbus \
         dbus-x11 \
         libfontconfig1 \
         libfontconfig1:i386 \
@@ -30,7 +29,6 @@ RUN     apt-get update && apt-get install -y --no-install-recommends \
         xdg-utils \
         xfonts-base \ 
         xterm \
-        xauth \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ########## Configure user ########## 
@@ -45,8 +43,6 @@ ENV     PUID=1000 \
 RUN     mkdir -p ${USER_HOME} \
         && useradd -d ${USER_HOME} -s /bin/bash ${USER} \
         && chown -R ${USER} ${USER_HOME} \
-        && groupmod -g 484 video \
-        && usermod -a -G video ${USER} \
         && echo "${USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers 
          
 
@@ -78,11 +74,11 @@ RUN     apt-get update && apt-get install -y --no-install-recommends \
         && ln -sf /usr/games/steam /usr/bin/steam
 
 # Is this needed? Seems not on openSUSE host.
-########## Create .Xauthority files ##########
-RUN     touch /root/.Xauthority \
-        && chown root:root /root/.Xauthority \
-        && touch ${USER_HOME}/.Xauthority \
-        && chown ${USER}:${USER} ${USER_HOME}/.Xauthority
+########### Create .Xauthority files ##########
+#RUN     touch /root/.Xauthority \
+#        && chown root:root /root/.Xauthority \
+#        && touch ${USER_HOME}/.Xauthority \
+#        && chown ${USER}:${USER} ${USER_HOME}/.Xauthority
 
 
 ########## Set port ##########

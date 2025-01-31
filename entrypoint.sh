@@ -14,10 +14,15 @@ start_xvfb() {
     sleep 5 
 }
 
+# Set permissions for /dev/pts/0
+set_terminal_permissions() {
+    chmod a+rw /dev/pts/0
+}
+
 # Start Steam as user
 start_steam() {
-    runuser -u root -- xterm -maximized &
-    #runuser -u steam -- steam & 
+    #runuser -u root -- xterm -maximized &
+    runuser -u steam -- steam & 
 }
 
 # Start x11vnc
@@ -41,10 +46,11 @@ start_novnc_proxy() {
 main() {
     remove_x1_lock
     start_xvfb
+    set_terminal_permissions
     start_steam
     start_x11vnc
     create_novnc_symlink
-    start_novnc_proxy
+    start_novnc_proxy    
 }
 
 # Call main
