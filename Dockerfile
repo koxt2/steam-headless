@@ -53,6 +53,11 @@ RUN     apt-get update && apt-get install -y --no-install-recommends \
         novnc \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+########## Install Openbox ##########
+RUN     apt-get update && apt-get install -y --no-install-recommends \
+        openbox \
+        && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 ########## Install Vulkan and Mesa ##########
 RUN     apt-get update && apt-get install -y --no-install-recommends \
         libgl1-mesa-dri:i386 \
@@ -90,5 +95,6 @@ RUN openssl req -x509 -newkey rsa:4096 -keyout /usr/share/novnc/self.pem -out /u
 ########## Setup entrypoint.sh ##########
 COPY    entrypoint.sh / 
 RUN     chmod +x /entrypoint.sh 
+COPY    rc.xml /
 
 ENTRYPOINT ["/entrypoint.sh"]

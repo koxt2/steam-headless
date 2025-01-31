@@ -14,6 +14,12 @@ start_xvfb() {
     sleep 5 
 }
 
+# Start Openbox
+start_openbox() {
+    openbox-session &
+    mv /rc.xml /etc/xdg/openbox/rc.xml
+}
+
 # Set permissions for /dev/pts/0
 set_terminal_permissions() {
     chmod a+rw /dev/pts/0
@@ -46,6 +52,7 @@ start_novnc_proxy() {
 main() {
     remove_x1_lock
     start_xvfb
+    start_openbox
     set_terminal_permissions
     start_steam
     start_x11vnc
