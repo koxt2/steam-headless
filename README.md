@@ -4,17 +4,17 @@
 
 In it's current state this only works using podman. Docker hits namespace problems. 
 
-It has no useful purpose other than to run the steam client in a container. It cannot be used as primary Steam install.
-
 ## So far...
 
-It installs the Steam client, it's capable of installing and playing native Linux games, and has audio. Proton hasn't been tested.
+It installs the Steam client, it's capable of installing and playing native Linux games, and has audio. 
 
 ## Issues
 
 There is no GPU acceleration, it's purely software rendered. 
 
-...more!
+Proton hasn't been tested.
+
+X server key autorepeat not working.
 
 ## Setup
 
