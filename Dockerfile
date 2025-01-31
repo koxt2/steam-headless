@@ -78,14 +78,6 @@ RUN     apt-get update && apt-get install -y --no-install-recommends \
         && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
         && ln -sf /usr/games/steam /usr/bin/steam
 
-# Is this needed? Seems not on openSUSE host.
-########### Create .Xauthority files ##########
-#RUN     touch /root/.Xauthority \
-#        && chown root:root /root/.Xauthority \
-#        && touch ${USER_HOME}/.Xauthority \
-#        && chown ${USER}:${USER} ${USER_HOME}/.Xauthority
-
-
 ########## Set port ##########
 EXPOSE  6080
 
